@@ -1,14 +1,12 @@
 /**
- * Created by lcom23_two on 1/19/2017.
+ * Created by lcom23_two on 1/20/2017.
  */
-/**
- * Created by lcom23_two on 1/19/2017.
- */
+
 var mongobd = require("mongodb");
 var mongoClient = mongobd.MongoClient;
 var url = "mongodb://localhost:27017/dataTable";
 
-function mconnect() {
+function adduser() {
 
     this.get = function (res) {
 
@@ -18,8 +16,9 @@ function mconnect() {
             }
             else
             {
-              //  console.log("connected to:"+url);
-                db.collection('dt').find().toArray(function (err, data) {
+                //  console.log("connected to:"+url);
+                db.collection('dt').insert({"name": "name3","quote" : "quote3"});
+                db.collection('dt').find({"name": "name3"}).toArray(function (err, data) {
                     if(err){
                         console.log(err);
                     }
@@ -28,11 +27,12 @@ function mconnect() {
                         res.send(data);
                     }
                 });
-               // db.close();
+                // db.close();
             }
         });
 
     }
 }
 
-module.exports = new mconnect();
+
+module.exports = new adduser();

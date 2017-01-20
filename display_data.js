@@ -2,13 +2,16 @@
  * Created by lcom23_two on 1/19/2017.
  */
 var mconnect = require("./mconnect");
-
+var deleteUser = require("./deleteuser");
+var updateuser = require("./updateuser");
+var adduser = require("./adduser");
 var bodyParser = require('body-parser');
 var express = require("express");
 var path = require("path");
-var server = require('http').Server(app);
+
 
 var app = express();
+var server = require('http').Server(app);
 
 app.use(bodyParser.urlencoded({extended:true}));
 app.use(bodyParser.json());
@@ -20,31 +23,31 @@ app.get("/mget",function (err, data) {
 
 });
 
-/*mongoClient.connect(url,function (err, db) {
-    if(!err){
-        console.log("connected:"+url);
+app.get("/insert",function (err, data) {
 
-        var collection = db.collation('dataTable');
-        var data1 = {"title":"title2","desc":"desc2"};
-        var data2 = {"title":"title3","desc":"desc3"};
-        var data3 = {"title":"title4","desc":"desc4"};
+    adduser.get(data);
+    // console.log(data);
 
-        collection.insert([data1,data2,data3],function (err, result) {
-            if(err){
-                console.log(err);
-            }
-            else {
-                console.log(result);
-            }
-        })
-    }
-    else {
-        console.log(err);
-    }
-});*/
+});
+
+app.get("/update",function (err, data) {
+
+    updateuser.get(data);
+
+    // console.log(data);
+
+});
+
+app.get("/delete",function (err, data) {
+
+    deleteUser.get(data);
+    // console.log(data);
+
+});
+
 
 var server = app.listen(8055,function () {
     var host = server.address().address;
     var port = server.address().port;
     console.log("host:port  %s:%s",host,port);
-})
+});
