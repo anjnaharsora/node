@@ -16,8 +16,8 @@ app.post("/addData",function (req,res) {
 
     sql.executeSql("insert into employee(email,description) VALUES ('"+req.body.email+"','"+req.body.description+"')",function (err, data) {
         if (!err) {
-            //return res.send({data: data});
-             res.redirect('./update.html');
+            return res.send({data: data});
+
         } else {
             return res.send({error: err});
         }
