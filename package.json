@@ -11,10 +11,12 @@
   "dependencies": {
     "body-parser": "^1.16.0",
     "express": "^4.14.0",
+    "jsonwebtoken": "^7.2.1",
     "mongodb": "^2.2.21",
     "mongoose": "^4.7.7",
     "mongoose-assert": "^1.0.2",
     "mongoose-unique-validator": "^1.0.3",
+    "morgan": "^1.7.0",
     "mysql": "^2.12.0"
   },
   "devDependencies": {
