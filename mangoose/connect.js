@@ -1,75 +1,78 @@
-/**
- * Created by lcom23_two on 1/20/2017.
- */
-var mongoose = require('mongoose');
-mongoose.connect('mongodb://localhost:27017/dataTable');
-var express    = require('express');        // call express
-var app        = express();                 // define our app using express
+var Person = require("./User.js");
+var express = require("express");
 var bodyParser = require('body-parser');
 
-var Person =require('./User.js');
-app.use(bodyParser.urlencoded({ extended: true }));
+var app = express();
+
+
+app.use(bodyParser.urlencoded({extended:true}));
 app.use(bodyParser.json());
+var mongoose = require('mongoose');
+mongoose.connect('mongodb://localhost:27017/dataTable');
 
-
-// create a bear (accessed at POST http://localhost:8080/api/bears)
-app.post('/add',function(req, res) {
-
-    var person = new Person();      // create a new instance of the Bear model
-    person.name = req.body.name;  // set the bears name (comes from the request)
-    person.usename = req.body.username;
+app.post("/insert",function (req, res) {
+    var person = new Person();
+    person.name = req.body.name;
+    person.username = req.body.username;
     person.password = req.body.password;
-    // save the bear and check for errors
-    person.save(function(err,data) {
-        if (err) {
-            res.send(err);}
-        else
-        {
+
+    person.save(function (err,data) {
+        if(err){
+            res.send(err);
+        }
+        else{
             res.send(data);
         }
-
-
     });
-
 });
 
-app.post('/delete',function(req,res){
+app.post("/update",function (req, res) {
+
+    Person.update({"name":req.body.name},{$set:{"username":"username","password":"password"}},function (err,data) {
+        if(err){
+            res.send(err);
+        }
+        else{
+            res.send(data);
+        }
+    });
+});
+
+app.post("/delete",function (req, res) {
+
     Person.remove({"name":req.body.name},function (err,data) {
         if(err){
             res.send(err);
         }
-        else
-        {
+        else{
             res.send(data);
         }
-
     });
 });
-app.post('/update',function (req,res) {
-    Person.update({"name":req.body.name},{$set:{"username":"userr1","password":"abgfhjfgyc"}},function (err,data) {
-        if(err)
-        {
+
+app.post("/display",function (req, res) {
+
+    Person.find({"name" : req.body.name},(function (err,data)
+    {
+        if(err){
             res.send(err);
         }
-        else
-        {
+        else {
             res.send(data);
+
         }
     })
-
-
+    );
 });
-app.get('/display',function (req,res) {
-    Person.find(function (err,data) {
-        if(err)
-        {
-            res.send(err);
-        }
-        else
-        {
-            res.send(data);
-        }
+/*var u1=new user({name : "kinjal",   username: "kinjalm",
+    password: "kinjal1",
+    admin: true,
+    location: "surat"
+});
+console.log("name:"+u1.name+"\nUsername:"+u1.username);*/
 
-    })
-})
-
+var server = app.listen(8075,function () {
+    var host = server.address().address;
+    var port  = server.address().port;
+    console.log(host + port);
+});

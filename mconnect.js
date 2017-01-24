@@ -6,7 +6,7 @@
  */
 var mongobd = require("mongodb");
 var mongoClient = mongobd.MongoClient;
-var url = "mongodb://localhost:27017/post";
+var url = "mongodb://localhost:27017/dataTable";
 
 function mconnect() {
 
@@ -19,7 +19,7 @@ function mconnect() {
             else
             {
               //  console.log("connected to:"+url);
-                db.collection('dataTable').find().toArray(function (err, data) {
+                db.collection('dt').find().toArray(function (err, data) {
                     if(err){
                         console.log(err);
                     }
