@@ -11,7 +11,9 @@
   "dependencies": {
     "body-parser": "^1.16.0",
     "express": "^4.14.0",
+    "express-fileupload": "0.0.6",
     "jsonwebtoken": "^7.2.1",
+    "lodash": "^4.17.4",
     "mongodb": "^2.2.21",
     "mongoose": "^4.7.7",
     "mongoose-assert": "^1.0.2",
