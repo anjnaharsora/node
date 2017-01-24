@@ -6,10 +6,12 @@ var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
 // create a schema
+
 var personSchema = new Schema({
     name  : String,
     username : { type: String, index: { unique: true }},
     password : String
+
 
 });
 
