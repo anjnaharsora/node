@@ -3,4 +3,5 @@
  */
 module.exports = {
     'secret': 'kinjalvmodi1',
+    'port' : '8041'
 };

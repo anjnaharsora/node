@@ -14,18 +14,17 @@ var jwt    = require('jsonwebtoken');
 var config = require('./config.js');
 var User   = require('./Users.js');
 
-
+var port = config.port;
 mongoose.connect('mongodb://localhost:27017/dataTable');
 app.set('superSecret', config.secret);
 
 // use morgan to log requests to the console
 app.use(morgan('dev'));
-var port = 8066;
 app.get('/', function(req, res) {
     res.send('Hello! The API is at http://localhost:' + port + '/api');
 });
 
-app.listen(8066);
+app.listen(port);
 console.log('Magic happens at http://localhost:' + port);
 
 app.get('/setup', function(req, res) {
