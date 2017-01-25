@@ -102,3 +102,21 @@ apiRoutes.post('/authenticate', function(req, res) {
 
     });
 });
+
+apiRoutes.use(function (req, res, next) {
+    var token = req.body.token || req.query.token || req.header['x-access-token'];
+
+    if (token){
+        jwt.verify(token,app.get('secret'),function (err, decode) {
+            if(err){
+                return res.JSON({status : false , message : 'fail to authentcate'});
+            }
+            else {
+                req.decode = decode;next();
+            }
+        });
+    }
+    else{
+        res.send("no token provoded");
+    }
+});

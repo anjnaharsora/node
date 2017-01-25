@@ -42,7 +42,7 @@ app.post('/display',function (req, res) {
     MongoClient.connect(url,function (err , db) {
         if (!err) {
 
-            db.collection('dt').find({"name" : req.body.name}).toArray(function (err, data) {
+            db.collection('dt').find({}).sort({_id : 1}).toArray(function (err, data) {
                 if(err){
                     console.log(err);
                 }
