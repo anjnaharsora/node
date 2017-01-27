@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+    <meta charset="UTF-8">
+    <title>API</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+<body ng-app="myApp">
+
+<p>The rootScope's text:</p>
+<h1>{{text}}</h1>
+
+<div ng-controller="myCtrl">
+
+    <p>The scope of the controller's text:</p>
+    <h1>{{text}}</h1>
+
+</div>
+
+<script>
+    var app = angular.module('myApp', []);
+    app.run(function($rootScope) {
+        $rootScope.text = 'rootText';
+
+    });
+    app.controller('myCtrl', function($scope) {
+        $scope.text = "Child Text";
+    });
+</script>
+</body>
+</html>

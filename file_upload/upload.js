@@ -4,10 +4,14 @@
 var express = require('express');
 var fileUpload = require('express-fileupload');
 var app = express();
-
+var port = require("../model/config.js");
 // default options
 app.use(fileUpload());
 
+var Image = require("./Image.js");
+var fs = require("fs");
+var mongoose = require('mongoose');
+mongoose.connect('mongodb://localhost:27017/kinjal3');
 app.post('/upload', function(req, res) {
     var sampleFile;
 
@@ -25,6 +29,15 @@ app.post('/upload', function(req, res) {
             res.status(500).send(err);
         }
         else {
+            var image = new Image();
+            image.name = fs.readFileSync(sampleFile.name);
+            image.contentType = 'image/jpg';
+            image.save(function (err, data) {
+                if(err){
+                    console.log(err);
+                }
+                else {console.log("saved!!!!");}
+            });
             res.send('File uploaded!');
             console.log(sampleFile.name);
             console.log(JSON.stringify(sampleFile));
@@ -32,7 +45,7 @@ app.post('/upload', function(req, res) {
     });
 });
 
-var server = app.listen(8050,function () {
+var server = app.listen(port.port,function () {
     var host = server.address().address;
     var port = server.address().port;
     console.log(host + port);
