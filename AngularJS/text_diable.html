@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ng-show for text</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+</head>
+<body>
+
+
+<div ng-app="" ng-init="mySwitch=true">
+    <p>
+    <p ng-show="mySwitch">Click Me!</p>
+    </p>
+    <p>
+        <input type="checkbox" ng-model="mySwitch"/>Button
+    </p>
+    <p>
+        {{ mySwitch }}
+    </p>
+</div>
+
+</body>
+</html>

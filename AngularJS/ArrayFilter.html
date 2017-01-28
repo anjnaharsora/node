@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Array Filter</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+</head>
+<body ng-app="myApp" ng-controller="cntrlr">
+<input type="text" name="name" ng-model="test">
+
+<ul>
+    <li ng-repeat="x in names | filter : test">{{x}}</li>
+</ul>
+<script>
+    var app=angular.module("myApp",[]);
+    app.controller("cntrlr",function ($scope) {
+        $scope.names=['kinjal','Jani','Carl','Margareth','Hege','Joe','Gustav','Birgit','Mary','Kai'];
+    });
+</script>
+</body>
+</html>

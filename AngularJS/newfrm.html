@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Form</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+</head>
+<body ng-app="">
+<select ng-model="myVar">
+    <option value="insert">insert
+    <option value="update">Update
+    <option value="delete">Delete
+    <option value="display">Display
+</select>
+<div ng-switch="myVar">
+    <div ng-switch-when="insert">
+        <form name="frm" action="http://localhost:8087/register" method="post">
+            <h4>Enter FirstName:</h4>
+            <input type="text" name="fname" ng-model="fname" required>
+            <span ng-show="frm.fname.$touched && frm.fname.$invalid">The name is required.</span>
+            <br><br>
+            <h4>Enter LastName:</h4>
+            <input type="text" name="lname" ng-model="lname" required>
+            <span ng-show="frm.lname.$touched && frm.lname.$invalid">Lastname cnnot be empty.</span>
+            <br><br>
+            <h4>Enter Email:</h4>
+            <input type="email" name="email" ng-model="email" required>
+            <span ng-show="frm.email.$touched && frm.email.$invalid">email cnnot be empty.</span>
+            <br><br>
+            <input type="submit" ng-disabled="frm.fname.$touched && frm.fname.$invalid ||frm.lname.$touched && frm.lname.$invalid ||
+frm.email.$touched && frm.email.$invalid">
+
+        </form>
+        <p>First name:{{fname}}</p>
+        <p>Last Name:{{lname}}</p>
+        <p>Email:{{email}}</p>
+    </div>
+    <div ng-switch-when="update">
+        <form action="http://localhost:8087/update" name="myFrm" method="post">
+            <br><br>
+            old firstname:<input type="text" name="fname" value="" >
+            <br><br>
+            First Name:<input type="text" name="nfname" value="" >
+            <br><br>
+            Last Name:<input type="text" name="nlname" value="" >
+            <br><br>
+            email:<input type="email" name="nmail">
+            <br><br>
+            <input type="submit" value="Submit">
+        </form>
+    </div>
+    <div ng-switch-when="delete">
+        <form action="http://localhost:8087/delete" method="post">
+            <br><br>
+            First Name:<input type="text" name="fname" value="" >
+            <br><br>
+
+            <input type="submit" value="Submit">
+        </form>
+    </div>
+    <div ng-switch-when="display">
+        <form action="http://localhost:8087/display" method="post">
+            <br><br>
+            First Name:<input type="text" name="fname" value="" >
+            <br><br>
+
+            <input type="submit" value="Submit">
+        </form>
+    </div>
+</div>
+
+</div>
+</body>
+</html>
