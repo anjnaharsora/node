@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>implementation of ng-if</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+    <script src="MoviesController.js"></script>
+    <style>
+        .old {
+            background:gray;
+        }
+        .new{
+            background: wheat;
+        }
+    </style>
+</head>
+<body ng-app="myapp">
+    <div ng-controller="MoviesController as movies">
+        <ul>
+            <li
+                ng-repeat="x in movies.favorites"
+                ng-class="x.year < 2015 ? 'old' : 'new'">
+
+                Title: {{x.title}}
+                Year : {{x.year}}
+                <p ng-if="x.year < 2016">movie is old!!!</p>
+                <div ng-switch="x.catagory">
+                    Catagory:
+                    <div ng-switch-when="action">
+                        {{x.catagory}}
+                    </div>
+                    <div ng-switch-when="thriller">
+                        {{x.catagory}}
+                    </div>
+                    <div ng-switch-when="comedy">
+                        {{x.catagory}}
+                    </div>
+                    <div ng-switch-default>
+                        No catagories found!!
+                    </div>
+                </div>
+                <input type="text" ng-model="x.year">
+                <a href="#" ng-click="movies.addToList(x);">click to add in list</a>
+
+            </li>
+        </ul>
+        <div>
+            <p>like list</p>
+            <ul>
+                <li ng-repeat="like in movies.list">
+                        {{like.title}}
+                    <a href="#" ng-click="movies.unlike($index);"> Unlike</a>
+                </li>
+
+            </ul>
+
+        </div>
+    </div>
+
+</body>
+</html>
