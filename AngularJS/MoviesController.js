@@ -1,7 +1,15 @@
 function MoviesController() {
 
 	this.list=[];
+    this.newTitle='';
+    this.newYear='';
 
+    this.addMovie = function () {
+        this.favorites.push({
+            title : this.newTitle,
+            year : this.newYear
+        })
+    };
 	this. favorites = [{
 
 		title: "qwebnvr",
@@ -30,7 +38,7 @@ function MoviesController() {
 	};
 	this.addToList = function (movie) {
 		this.list.push(movie);
-	}
+	};
 }
 
 angular.module("myapp",[]).controller("MoviesController",MoviesController);
