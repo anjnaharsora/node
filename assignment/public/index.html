@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Form</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.js"></script>
+    <script src="controller.js"></script>
+
+</head>
+<body ng-app="myApp">
+<div ng-controller="MainController">
+    <form name="frm" method="post" ng-submit="addData()">
+        Name:
+        <input type="text" name="name" ng-model="name" required>
+        <span ng-show="frm.name.$touched && frm.name.$invalid">The name is required.</span>
+        <br><br>
+        State:
+        <select ng-model="state" ng-change="getCity()" name="state" required>
+            <option ng-repeat="x in states" value="{{x.name}}">
+                {{x.name}}
+            </option>
+        </select>
+        <span ng-show="frm.state.$touched && frm.state.$invalid">The state is required.</span>
+        <br><br>
+
+        <label>City:</label>
+        <select ng-model="city" ng-model="city" name="city" value="{{y.name}}" required>
+        <option ng-repeat="y in city">
+        {{y.name}}
+        </option>
+        </select>
+        <span ng-show="frm.city.$touched && frm.city.$invalid">The city is required.</span>
+        <br><br>
+        <label>Gender:</label>
+        <input type="radio" name="gender" ng-model="gender" name="male">Male
+        <input type="radio" name="gender" ng-model="gender" name="female">Female
+        <br><br>
+        <label>Email:</label>
+        <input type="email" ng-model="email" name="email" required>
+        <span ng-show="frm.email.$touched && frm.email.$error.required">The email is required.</span>
+        <span ng-show="frm.fname.$dirty">The email should be proper.</span>
+        <br><br>
+
+        <!--<input type="file" ng-model="myFile" name="sampleFile" required><br><br>-->
+        <!--checkbox for submit-->
+        <label>accept <input type="checkbox" ng-model="checked"></label><br><br>
+        <!--submitbutton-->
+        <button type="submit" ng-model="submit" ng-disabled="!checked">Button</button>
+
+
+    </form>
+
+    <table>
+        <tr>
+            <td>Name</td>
+            <td>State</td>
+            <td>city</td>
+            <td>gender</td>
+            <td>email</td>
+            <td>edit</td>
+            <td>delete</td>
+
+        </tr>
+        <tr ng-repeat="x in datas">
+            <td>{{x.name}}</td>
+            <td>{{x.state}}</td>
+            <td>{{x.city}}</td>
+            <td>{{x.gender}}</td>
+            <td>{{x.email}}</td>
+            <td><button name="edit" ng-click="editDate()"></button> </td>
+            <td>delete</td>
+
+        </tr>
+    </table>
+</div>
+</body>
+</html>
