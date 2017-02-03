@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Image upload</title>
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.4/angular.min.js"></script>
+    <script src="NewController.js"></script>
+
+</head>
+<body ng-app="myApp" ng-controller="NewController">
+<form name="frm" method="post" ng-submit="upload()">
+
+    <input type="file" file-model="myFile"/><br><br>
+    <button ng-click="uploadFile()">Upload</button>
+
+</form>
+</body>
+</html>
