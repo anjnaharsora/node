@@ -1,0 +1,12 @@
+<div ng-controller="RegisterController">
+    <h2>Register</h2>
+    <form name="form" method="post">
+        Name:
+        <input type="text"  ng-model="obj.name"><br><br>
+        Upload Photo:
+        <input type="file"  file-model="obj.myFile"><br><br>
+        Parent Name:
+        <input type="text" ng-model="obj.pname"><br><br>
+        <input type="button" ui-sref="display" name="submit" value="submit">
+    </form>
+</div>
