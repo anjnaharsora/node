@@ -1,23 +1,52 @@
-<!DOCTYPE html>
+<html ng-app="app">
 <head>
-    <title>Bootstrap Example</title>
 
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-route.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.4.2/angular-ui-router.min.js"></script>
-    <!--<script src="js/MainController.js"></script>-->
-    <!--<script src="js/routes.js"></script>-->
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.0/css/font-awesome.css" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.25/angular.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.25/angular-route.js"></script>
+    <script src="script.js"></script>
+   <!--<style>-->
+    <!--table, th , td  {-->
+    <!--border: 1px solid grey;-->
+    <!--border-collapse: collapse;-->
+    <!--padding: 5px;-->
+    <!--}-->
+    <!--table tr:nth-child(odd) {-->
+    <!--background-color: #f1f1f1;-->
+    <!--}-->
+    <!--table tr:nth-child(even) {-->
+    <!--background-color: #ffffff;-->
+    <!--}-->
+    <!--</style>-->
+</head>
+<body ng-controller="displayController">
+<header>
+    <nav class="navbar navbar-inverse">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <a class="navbar-brand">logo</a>
+            </div>
+            <ul class="nav navbar-nav">
+                <li class="active"><a href="#">Home</a></li>
+                <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">menu<span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="#">Display</a></li>
+                        <li><a href="#insert">insert</a></li>
+                        <li><a href="#update">Update</a></li>
+                    </ul>
+                </li>
+                <li><a href="delete"></a></li>
+                <li><a href="#">Page 3</a></li>
+            </ul>
+        </div>
+    </nav>
+</header>
 
-<body ng-app="myApp">
-
-<p><a href="#/">Main</a></p>
-
-<a href="#london">City 1</a>
-<a href="#paris">City 2</a>
-
-<p>Click on the links to read about London and Paris.</p>
-
-<div ng-view></div>
+<div ng-view>
+</div>
 
 </body>
 </html>

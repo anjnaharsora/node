@@ -1,0 +1,51 @@
+<div style="align:center;margin-top: 10px;" class="container">
+
+<div ng-controller="addController">
+    <h2>Register</h2>
+   <table class="table-info">
+    <form name="form" method="post">
+        <tr>
+            <td>
+               <label>Name:</label>
+            </td>
+            <td>
+                <input type="text"  ng-model="obj.name"><br><br>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label>Upload Photo:</label>
+            </td>
+            <td>
+                <input type="file" file-model="myFile"><br><br>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label>Parent Name:</label>
+            </td>
+            <td>
+
+                <!--<input type="text" class="autosuggesttextbox"   bs-typeahead="datalists" ng-model="obj.pname"><br><br>-->
+                <!--<input type="text" ng-model="obj.pname"><br><br>-->
+                <input type="text" ng-model="obj.pname"  list="user">
+                <datalist id="user">
+
+                     <option ng-repeat="d in datas" value="{{d.pname}}">{{a.pname}}</option>
+                </datalist>
+            </td>
+
+        </tr>
+        <tr>
+            <td colspan="2">
+                <button ng-click="go('',obj)">Submit</button>
+            </td>
+        </tr>
+<!--<ul>-->
+        <!--<li ng-repeat="x in dispdata |filter: {x.pname : obj.pname}"></li>-->
+        <!--</ul>-->
+
+    </form>
+   </table>
+</div>
+</div>

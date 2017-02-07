@@ -1,0 +1,18 @@
+<div>
+
+<div ng-controller="editController">
+    <div ng-repeat="a in getdata">
+        <form>
+            id:<input type="text" ng-disabled="true" ng-value="a._id" ng-model="a._id"><br><br>
+            Name: <input type="text" ng-value="a.name" ng-model="a.name"><br><br>
+            Profile Photo:
+            <img ng-src="html/uploads/{{a.ufile}}" alt="{{a.ufile}}" style="height: 100px;width: 100px;">
+            <input type="file" file-model="myFile"><br><br>
+            Parent NAme:<input type="text" ng-value="a.pname" ng-model="a.pname"><br><br>
+            <button ng-click="go('',a)">Submit</button>
+        </form>
+    </div>
+
+
+</div>
+</div>
