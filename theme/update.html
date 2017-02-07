@@ -1,0 +1,26 @@
+<div class="animated fadeIn">
+
+<script type="text/ng-template" id="update.html">
+    <div class="modal-header">
+        <h3 class="modal-title" id="modal-title">Update Data</h3>
+    </div>
+    <div class="modal-body" id="modal-body">
+        <form name="updatefrm" ng-submit="updateData()">
+            <div ng-repeat="d in getdata">
+                <input type="text" ng-value="d._id" ng-disabled="true" ng-model="frm.id"><br><br>
+                <input type="text" ng-value="d.name" ng-model="name"><br><br>
+                <input type="text" ng-value="d.state" ng-model="state"><br><br>
+                <input type="text" ng-value="d.city" ng-model="city"><br><br>
+                <input type="text" ng-value="d.gender" ng-model="gender"><br><br>
+                <input type="text" ng-value="d.email" ng-model="email"><br><br>
+                <input type="submit" ng-value="submit" ng-model="submit">
+            </div>
+        </form>
+    </div>
+    <div class="modal-footer">
+        <button class="btn btn-primary" type="button" ng-click="$ctrl.ok()">OK</button>
+        <button class="btn btn-warning" type="button" ng-click="$ctrl.cancel()">Cancel</button>
+    </div>
+</script>
+    </div>
+<div ng-controller="toastrWelcome"></div>

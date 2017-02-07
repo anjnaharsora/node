@@ -1,0 +1,18 @@
+<div>
+    <div ng-controller="DisplayController">
+        <button type="submit" ui-sref="insert">Add Data</button>
+    </div>
+    <table>
+        <tr>
+            <td>name</td>
+            <td>parent name</td>
+            <!--<td>name</td>-->
+        </tr>
+        <tr ng-repeat="d in datas">
+            <td> {{d.name}} </td>
+            <td> {{d.pname}} </td>
+            <td><button type="submit" name="submit" ui-sref="editData"></button></td>
+        </tr>
+    </table>
+
+</div>
