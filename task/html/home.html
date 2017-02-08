@@ -1,18 +1,24 @@
-<div>
-    <div ng-controller="DisplayController">
-        <button type="submit" ui-sref="insert">Add Data</button>
+<div align="center">
+    <div ng-controller="displayController">
+        <button ng-click="go('insert')" class="btn btn-success">Add Data</button><br><br>
     </div>
-    <table>
+    <div class="table-responsive">
+    <table class="table table-hover table-info">
         <tr>
-            <td>name</td>
-            <td>parent name</td>
-            <!--<td>name</td>-->
+            <td ng-click="orderByMe('name')">Name</td>
+            <td ng-click="orderByMe('pname')">Parent Name</td>
+            <td>Profile</td>
+            <td>Edit</td>
+            <td>Delete</td>
+
         </tr>
-        <tr ng-repeat="d in datas">
+        <tr ng-repeat="d in dispdata | orderBy:myOrderBy | orderBy:'-_id'">
             <td> {{d.name}} </td>
             <td> {{d.pname}} </td>
-            <td><button type="submit" name="submit" ui-sref="editData"></button></td>
+            <td><img ng-src="html/uploads/{{d.ufile}}" alt="{{d.ufile}}" style="height: 100px;width: 100px;"></td>
+            <td><button ng-click="go('update',d._id)"  class="btn btn-info navbar-btn btn-group btn-group-lg">Edit</button></td>
+            <td><button ng-click="delete('',d._id)"  class="btn btn-danger navbar-btn btn-group btn-group-lg">Delete</button></td>
         </tr>
     </table>
-
+    </div>
 </div>

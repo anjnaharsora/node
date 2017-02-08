@@ -1,12 +1,22 @@
-<div class="container" ng-controller="LoginController">
-    <fieldset>
-            <form ng-submit="login()" method="get">
-               <label>UserName:</label> <input type="text" name="username"><br><br>
-                <label>Password: </label><input type="password" name="password"><br><br>
-                <input type="submit" name="submit" class="btn btn-primary">
-                <a href="/addData">alick here</a>
-            </form>
-
-
-    </fieldset>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>login</title>
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.0/css/font-awesome.css" />
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.25/angular.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.25/angular-route.js"></script>
+    <script src="../script.js"></script>
+</head>
+<body ng-app="app" ng-controller="loginController">
+<div class="container">
+    <div class="container" style="margin-top: 10px;">
+    <form name="frm" method="post">
+        UserName: <input type="text" ng-model="obj.username"><br><br>
+        Password: <input type="password" ng-model="obj.password"><br><br>
+        <button ng-click="redirect(obj)" class="btn btn-primary">Submit</button>
+    </form>
+    </div>
 </div>
+</body>
+</html>
